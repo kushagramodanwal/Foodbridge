@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate Food - FoodBridge</title>
+    <link rel="stylesheet" href="donate.css">
+</head>
+<body>
+    <div class="donate-container">
+        <h1>Donate Food</h1>
+        <p>Fill in the details below to list your surplus food for donation.</p>
+        
+        <form id="donateForm">
+            <label for="foodType">Food Type:</label>
+            <input type="text" id="foodType" name="foodType" placeholder="e.g. Rice, Bread, Vegetables" required>
+
+            <label for="quantity">Quantity (kg):</label>
+            <input type="number" id="quantity" name="quantity" placeholder="e.g. 10" required> 
+
+            <label for="expiryDate">Expiry Date:</label>
+            <input type="date" id="expiryDate" name="expiryDate" required>
+
+            <label for="eventType">Event Type:</label>
+            <select id="eventType" name="eventType" required>
+                <option value="" disabled selected>Select Event Type</option>
+                <option value="Wedding">Wedding</option>
+                <option value="Restaurant">Restaurant</option>
+                <option value="Party">Party</option>
+                <option value="Household">Household</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="location">Pickup Location:</label>
+            <input type="text" id="location" name="location" placeholder="Enter pickup location" required>
+
+            <button type="submit" class="btn-submit">Submit Donation</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("donateForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Get form values
+            const foodType = document.getElementById("foodType").value;
+            const quantity = document.getElementById("quantity").value + " kg";
+            const expiryDate = document.getElementById("expiryDate").value;
+            const eventType = document.getElementById("eventType").value;
+            const location = document.getElementById("location").value;
+
+            // Create donation object
+            const donation = { foodType, quantity, expiryDate, eventType, location, status: "Available" };
+
+            // Store in localStorage
+            let donations = JSON.parse(localStorage.getItem("donations")) || [];
+            donations.push(donation);
+            localStorage.setItem("donations", JSON.stringify(donations));
+
+            alert("Donation submitted successfully!");
+            window.location.href = "ngo.html"; // Redirect to available food page
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join as a Household</title>
+    <link rel="stylesheet" href="household.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Join as a Household</h2>
+        <form id="householdForm">
+            <label for="householdName">Household Name:</label>
+            <input type="text" id="householdName" name="householdName" required>
+
+            <label for="contact">Contact Number:</label>
+            <input type="tel" id="contact" name="contact" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" required></textarea>
+
+            <label for="reason">Why do you want to join?</label>
+            <textarea id="reason" name="reason" required></textarea>
+
+            <button type="submit">Join Now</button>
+        </form>
+    </div>
+    <script src="household-script.js"></script>
+</body>
+</html>
